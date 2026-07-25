@@ -19,7 +19,7 @@ A recreation of the classic Chrome Dino game built on Arduino using a 16×2 LCD 
 
 * Arduino Uno (or compatible)
 * 16×2 LCD
-* Joystick module (KY-023 or compatible)
+* Joystick module (GYF-860 or compatible)
 * Jumper wires
 
 This project is intended for learning embedded programming, Arduino development, and basic game logic implementation.
