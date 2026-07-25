@@ -1,3 +1,5 @@
+#IT'S NOT COMPLETE YET!!
+
 # arduino-dino-game
 Dino game with arduino uno in 16X2 LCD .
 
