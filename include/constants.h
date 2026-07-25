@@ -1,7 +1,7 @@
 #pragma once
 #include <Arduino.h>
 //------------< Names >-----------
-#define GAMENAME "LOST RUNNER"
+const String GAMENAME  = "MINI DINO";
 
 //------------< keys >-----------
 #define LEFT_BUTTON 8
@@ -25,11 +25,21 @@ constexpr int MID =  750;
 constexpr int SLOW = 1000;
 
 //------------< Game Board Size >----------
-constexpr int GAME_BOARD_ROW = 2;
-constexpr int GAME_BOARD_COLUMN = 12;
+const int GAME_BOARD_ROW = 2;
+const int GAME_BOARD_COLUMN = 12;
 
 //------------< Characters >----------
 #define HEART 1
 #define STAND 2
 #define WALK 3
+#define TREE 5
 #define VARIABLE_SPACE 7
+
+//------------< Joy Stick >----------
+#define JOY_STICK_X A0
+#define JOY_STICK_Y A1
+#define JOY_STICK_DEAD_ZONE 200
+#define JOY_STICK_CENTER 512
+
+//------------< Game Info >----------
+constexpr int TREE_RATE = 2;

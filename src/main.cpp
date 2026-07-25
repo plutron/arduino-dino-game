@@ -6,24 +6,22 @@
 #include <constants.h>
 #include <characters.h>
 
-
+int ab = 0;
+Direction a = Direction_down;
 
 void setup(){
+  Serial.begin(9600);
   lcd.begin(LCD_COLUMN,LCD_ROW);
-
-  for (int i = 8 ; i < 12; i++)  pinMode(i,INPUT_PULLUP);
-
-  for (int i  = 0 ; i< GAME_BOARD_ROW ; i++)
-    for (int j = 0 ; j < GAME_BOARD_COLUMN ; j++) 
-      game_board[i][j] = Space_empty;
   
-  set_button(&right_button,RIGHT_BUTTON);
-  set_button(&left_button,LEFT_BUTTON);
-  set_button(&up_button,UP_BUTTON);
-  set_button(&down_button,DOWN_BUTTON);
+  set_joystick(JOY_STICK_X,X,&joystickX);
+  set_joystick(JOY_STICK_Y,Y,&joystickY);
+  pinMode(joystickX.pin,INPUT);
+  pinMode(joystickY.pin,INPUT);
+
 
   lcd.createChar(HEART,heart);
   lcd.createChar(STAND,stand);
+  lcd.createChar(TREE,tree);
   lcd.clear();
   
   //print_intro();
@@ -32,5 +30,8 @@ void setup(){
 }
 
 void loop(){
-  //game_speed = get_game_speed();
+  game_loop();
+
 }
+
+

@@ -6,5 +6,7 @@
 
 extern LiquidCrystal lcd;
 extern Space game_board[GAME_BOARD_ROW][GAME_BOARD_COLUMN] ;
-extern int score ,top_score,game_speed ;
-extern Button left_button,up_button,right_button,down_button;
+extern int score ,top_score;
+extern Joystick joystickX,joystickY;
+extern Speed game_speed;
+extern Player player;

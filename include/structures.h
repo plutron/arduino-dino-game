@@ -1,17 +1,21 @@
 #pragma once
-#include <Arduino.h>
-
-struct Position
+#include <enum.h>
+struct Player
 {
+    PlayerStatus status;
     int x;
     int y;
+    int heart_left;
 };
 
-struct Button
+
+
+struct Joystick
 {
-    byte position;
-    byte current;
-    byte past;
+    uint8_t pin;
+    AxisDirection current;
+    AxisDirection past;
+    JoystickAxis axis;
 };
 
 
