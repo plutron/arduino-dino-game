@@ -13,6 +13,8 @@ Speed get_game_speed(){
     lcd.print("SPEED    < ");
     lcd.write(VARIABLE_SPACE);
     lcd.print("OO >");
+    lcd.setCursor(0,1);
+    lcd.print("START : UP");
     Direction joystic_directoin = Direction_none;
     int c = 0;
     while (true){
@@ -100,7 +102,7 @@ void print_board(int shift){
         lcd.setCursor(0,i);
         for(int j = shift; j < GAME_BOARD_COLUMN+shift;j++){
             if (game_board[i][j%GAME_BOARD_COLUMN] == Space_tree) lcd.write(TREE);
-            else lcd.print(" ");
+            else lcd.print(' ');
         }
             
     }
@@ -128,7 +130,7 @@ void update_board(int shift) {
     }
 
     else {
-        game_board[random(2)][location] = Space_tree;
+        game_board[random(GAME_BOARD_ROW)][location] = Space_tree;
     }
 }
 
@@ -137,26 +139,91 @@ void print_score(int s){
     lcd.print(s);
 }
 
-void check_player(){
+PlayerStatus check_player(Player &p,int shift){
+    if (game_board[p.y][(p.x+shift)%GAME_BOARD_COLUMN] == Space_tree) return lose;
+    return standing;
+}
 
+void print_player(Player &p){
+    lcd.setCursor(p.x,p.y);
+
+    if (p.status ==lose){
+        lcd.createChar(VARIABLE_SPACE,dead); 
+            lcd.setCursor(p.x,p.y);
+        lcd.write(VARIABLE_SPACE);
+        return ;
+    }
+    if(p.status == walking){
+        lcd.write(WALK);
+        return ;
+    }
+    lcd.write(STAND);
+}
+
+bool update_player_location(Player &p) {
+    Direction move = get_joystick_direction(&joystickX, &joystickY);
+
+    if (move == Direction_none)
+        return false;
+
+    if (move == Direction_right && p.x < GAME_BOARD_COLUMN - 1)
+        p.x++;
+
+    else if (move == Direction_left && p.x > 0)
+        p.x--;
+
+    else if (move == Direction_down && p.y < GAME_BOARD_ROW - 1)
+        p.y++;
+
+    else if (move == Direction_top && p.y > 0)
+        p.y--;
+
+    return true;
 }
 
 int game_loop(){
     unsigned long t = millis();
     int shift = 0;
     int game_delay;
+    int past_x = player.x;
+    int past_y = player.y;
 
     if (game_speed == Slow) game_delay = 1000;
     else if (game_speed == Normal) game_delay = 850;
     else game_delay = 700;
-
+    print_player(player);
     while(true){
-        lcd.setCursor(0,0);
-        update_board(shift);
-        print_board(shift);
-        print_score(shift);
-        shift ++;
-        delay(game_delay);
+
+        if(millis() - t >= game_delay){
+            shift++;
+            t = millis();
+            lcd.setCursor(0,0);
+            update_board(shift);
+            print_board(shift);
+            print_score(shift);
+            player.x = player.x >0 ? player.x -1 : 0;
+            past_x = player.x;
+            player.status = check_player(player,shift);
+            print_player(player);
+            if(player.status == lose){
+                
+                return shift;
+            }
+        }
+        
+        else if (update_player_location(player)){
+            lcd.setCursor(past_x, past_y);
+            lcd.write(' ');
+            past_x = player.x;
+            past_y = player.y;
+            player.status = check_player(player,shift);
+            print_player(player);
+            if(player.status == lose){
+                return shift;
+                
+            }
+        }
+
     }
 
 }
@@ -177,14 +244,30 @@ void set_player(Player *p){
     p->status = standing;
     p->x = 0;
     p->y = 0;
-    p->heart_left = 3;
 
 }
 
 void set_new_game(){
     clear_game_board(game_board);
     set_player(&player);
-    score = 0;
+    game_speed = get_game_speed();
+    lcd.clear();
+}
+
+void score_board(int s,int ts){
+    for(int i =0 ; i < LCD_ROW ; i++){
+        lcd.setCursor(0,i);
+        for(int j = 0 ; j < LCD_COLUMN ; j++){
+            lcd.print(' ');
+            delay(100);}
+    }
+    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print("SCORE ");
+    lcd.print(s);
+    lcd.setCursor(0,1);
+    lcd.print("TOP SCORE ") ;
+    lcd.print(ts);
 }
 
 

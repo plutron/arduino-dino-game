@@ -6,7 +6,6 @@
 #include <constants.h>
 #include <characters.h>
 
-int ab = 0;
 Direction a = Direction_down;
 
 void setup(){
@@ -24,13 +23,18 @@ void setup(){
   lcd.createChar(TREE,tree);
   lcd.clear();
   
-  //print_intro();
+  print_intro();
+
 
   
 }
 
 void loop(){
-  game_loop();
+  set_new_game();
+  score = game_loop();
+  score_board(score,top_score);
+  top_score = score > top_score ? score : top_score;
+  delay(3000);
 
 }
 

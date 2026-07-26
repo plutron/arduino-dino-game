@@ -35,7 +35,7 @@ enum AxisDirection {
 
 enum  PlayerStatus
 {
-   waling,
+   walking,
    standing,
    lose
 };

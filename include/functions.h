@@ -17,3 +17,4 @@ void clear_game_board(Space board[][GAME_BOARD_COLUMN]);
 void update_board(int shift);
 void print_board(int shift);
 void print_score(int s);
+void score_board(int s,int ts);

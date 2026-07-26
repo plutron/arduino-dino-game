@@ -1,7 +1,7 @@
 #pragma once
 #include <Arduino.h>
 //------------< Names >-----------
-const String GAMENAME  = "MINI DINO";
+const String GAMENAME  = "PIXEL RUNNER";
 
 //------------< keys >-----------
 #define LEFT_BUTTON 8

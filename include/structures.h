@@ -5,7 +5,6 @@ struct Player
     PlayerStatus status;
     int x;
     int y;
-    int heart_left;
 };
 
 
