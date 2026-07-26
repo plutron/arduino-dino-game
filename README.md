@@ -1,27 +1,117 @@
-#IT'S NOT COMPLETE YET!!
+# 🎮 Pixel Runner
 
-# arduino-dino-game
-Dino game with arduino uno in 16X2 LCD .
+**Pixel Runner** is a retro-style endless runner game built for Arduino and other microcontroller platforms. It runs on a **16×2 LCD display** and is controlled using a **joystick module**.
 
-# Arduino Dino Game
+The project is developed with **PlatformIO** and written in **C++**, following a modular architecture to keep the source code clean and maintainable.
 
-A recreation of the classic Chrome Dino game built on Arduino using a 16×2 LCD display. Control the dinosaur with a joystick, avoid incoming obstacles, and try to achieve the highest score. The project is written in C++ and focuses on clean code organization, making it easy to understand, modify, and extend.
+---
 
-## Features
+## ✨ Features
 
-* Smooth obstacle movement
-* Joystick controls
-* Jump mechanics
-* Score counter
-* Game over detection
-* Modular code structure
-* Easy to customize and expand
+* 🎮 Joystick controls
+* 🏃 Endless runner gameplay
+* ⚡ Multiple difficulty levels
+* 📈 Score tracking
+* 💀 Game Over screen
+* 🎨 Custom LCD characters
+* 🧩 Modular code structure
 
-## Hardware
+---
 
-* Arduino Uno (or compatible)
-* 16×2 LCD
-* Joystick module (GYF-860 or compatible)
+## 🛠 Hardware
+
+* Arduino Uno R3
+* 16×2 LCD (HD44780 compatible)
+* Joystick Module (KY-023 or compatible)
 * Jumper wires
 
-This project is intended for learning embedded programming, Arduino development, and basic game logic implementation.
+---
+
+## 🔌 Wiring
+
+### LCD 16×2
+
+| LCD Pin  | Arduino Pin                  |
+| -------- | ---------------------------- |
+| RS       | D7                           |
+| E        | D6                           |
+| D4       | D5                           |
+| D5       | D4                           |
+| D6       | D3                           |
+| D7       | D2                           |
+| VSS      | GND                          |
+| VDD      | 5V                           |
+| RW       | GND                          |
+| VO       | 10k Potentiometer (Contrast) |
+| A (LED+) | 5V (through a 220Ω resistor) |
+| K (LED−) | GND                          |
+
+### Joystick Module
+
+| Joystick Pin | Arduino Pin |
+| ------------ | ----------- |
+| VRx          | A0          |
+| VRy          | A1          |
+| VCC          | 5V          |
+| GND          | GND         |
+
+> **Note:** If your hardware connections are different, update the pin definitions in the source code accordingly.
+
+---
+
+## 📁 Project Structure
+
+```text
+include/
+├── characters.h
+├── constants.h
+├── enum.h
+├── functions.h
+├── structures.h
+└── variables.h
+
+src/
+├── characters.cpp
+├── functions.cpp
+├── main.cpp
+└── variables.cpp
+```
+
+---
+
+## 🚀 Getting Started
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/plutron/PixelRunner.git
+```
+
+2. Open the project in **PlatformIO**.
+3. Connect your Arduino Uno.
+4. Build and upload the project.
+
+---
+
+## 🎮 How to Play
+
+* Select the game speed.
+* Move the joystick to control the player.
+* Avoid incoming obstacles.
+* Survive as long as possible and achieve the highest score.
+
+---
+
+## 🤝 Contributing
+
+Contributions, suggestions, and bug reports are welcome. Feel free to open an issue or submit a pull request.
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+Made with ❤️ using **Arduino**, **PlatformIO**, and **C++**.
