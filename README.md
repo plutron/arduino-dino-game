@@ -14,7 +14,6 @@ The project is developed with **PlatformIO** and written in **C++**, following a
 * 🏃 Endless runner gameplay
 * ⚡ Multiple difficulty levels
 * 📈 Score tracking
-* 💀 Game Over screen
 * 🎨 Custom LCD characters
 * 🧩 Modular code structure
 
