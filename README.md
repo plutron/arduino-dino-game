@@ -1,8 +1,6 @@
 # 🎮 Pixel Runner
 
-<p align="center">
-  <img src="Videos/gamePlay.gif" width="600">
-</p>
+https://github.com/user-attachments/assets/967b7514-a33b-42ca-a3e1-172d2bff10ed
 
 **Pixel Runner** is a retro-style endless runner game built for Arduino and other microcontroller platforms. It runs on a **16×2 LCD display** and is controlled using a **joystick module**.
 
