@@ -88,7 +88,7 @@ src/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/plutron/PixelRunner.git
+git clone https://github.com/plutron/pixel-runner-Arduino.git
 ```
 
 2. Open the project in **PlatformIO**.
